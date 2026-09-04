@@ -1,0 +1,17 @@
+# Un Progetto dall’Inizio alla Fine
+
+Nei quattro capitoli precedenti abbiamo imparato un pezzo alla volta, un algoritmo, un dataset già preparato, un problema già formulato da qualcun altro. Questo capitolo funziona in modo diverso. Partiamo da un file che non abbiamo mai visto e ci fermiamo solo quando il modello risponde a una domanda che arriva da fuori, da un programma che non è il nostro notebook.
+
+Il percorso è questo. Carichiamo i dati e li sistemiamo, li esploriamo con tre grafici, dividiamo in addestramento e test, prepariamo le feature, confrontiamo tre classificatori e cerchiamo i parametri migliori di quello che vince. Poi salviamo su disco quello che serve e scriviamo una piccola applicazione che lo carica e risponde a chi la interroga.
+
+Conviene dirlo subito, questo capitolo è più difficile dei precedenti, e non perché introduce teoria nuova, dato che di teoria nuova non ce n’è quasi. È più difficile perché nessun passaggio è isolato dagli altri. Una scelta fatta durante la pulizia dei dati si vede tre pagine dopo nel punteggio del modello, e una distrazione nel preprocessing produce un errore che compare solo alla fine. Scrivi il codice mentre leggi e guarda gli output prima di passare oltre, perché se una cella dà un numero diverso da quello stampato qui, più avanti diventa difficile capire da dove veniva.
+
+L’ultima parte esce dal notebook e costruisce un servizio web, quindi useremo parole che in questo libro non sono ancora comparse, come *endpoint*, *richiesta* e *risposta*. Le spiegheremo prima di scrivere il codice. Restano invece fuori il container, il server in rete e il sistema che sorveglia il modello e lo riaddestra quando peggiora, perché appartengono all’ingegneria del software più che al machine learning. Li nominiamo alla fine, così saprai cosa manca tra quello che avrai costruito e un sistema che gira per anni.
+
+Il problema che affrontiamo si chiama churn, la parola che le aziende usano per l’abbandono. Un cliente che disdice l’abbonamento è un churn, e per un operatore telefonico è il numero che conta più di quasi tutti gli altri, perché acquisire un cliente nuovo costa molto più che tenersi quello che c’è già. La domanda vera però non è se un cliente abbandonerà, è quanto è probabile che lo faccia, perché il budget di retention è limitato e quello che serve è una classifica dal più a rischio al meno a rischio. Un modello che risponde soltanto sì oppure no quella classifica non la produce.
+
+C’è un secondo punto da tenere a mente, ed è che i due errori non costano uguale. Dire che un cliente resta e vederlo andare via significa perdere tutto quello che avrebbe pagato negli anni. Dire che se ne va quando invece sarebbe rimasto significa regalare uno sconto a qualcuno che non ne aveva bisogno. Il primo errore costa molto più del secondo, e questo deciderà quale metrica useremo per giudicare i modelli.
+
+I dati sono il dataset pubblico *Telco Customer Churn*, 7043 righe e 21 colonne, una riga per cliente. Due caratteristiche ci accompagneranno per tutto il capitolo. La prima è che quasi tutte le colonne contengono testo invece di numeri, e da lì nascerà tutto il lavoro di preparazione. La seconda è che le due classi non sono bilanciate, perché i clienti che restano sono molti di più di quelli che se ne vanno, e vedremo che questo basta a rendere inutile proprio la metrica a cui verrebbe naturale affidarsi.
+
+Cominciamo dal principio, cioè aprendo il file e guardando cosa contiene.
