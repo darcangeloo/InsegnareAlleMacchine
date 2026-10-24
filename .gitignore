@@ -1,0 +1,22 @@
+# Word files
+*.docx
+# Tmp files
+*.tmp
+# Python cache
+__pycache__/
+*.pyc
+*.pdf
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+creditcard.csv
+18) GMM/out.svg
+# Virtual environments
+venv/
+.env/"13) Dati sporchi/13.1) Credit Card Fraud/creditcard.csv" 
+*.pdf
+*.docx
+*.kpf
+
+# Errata
+*errata/
